@@ -1,13 +1,23 @@
 pipeline {
     agent any
 
-    tools {
-        jdk 'JAVA-17'
-    }
-
     stages {
-        stage('Verify Java') {
+        stage('Use Jenkins Java 17') {
+            tools {
+                jdk 'JAVA-17'
+            }
             steps {
+                echo "Using jenkins-managed file"
+                bat 'java -version'
+                bat 'javac -version'
+                bat 'echo JAVA_HOME=%JAVA_HOME%'
+
+            }
+        }
+        stage('Use Jenkins Java 21') {
+            steps {
+                echo "Using system-installed file"
+                bat "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.12.101-hotspot\\bin\\java.exe"
                 bat 'java -version'
                 bat 'javac -version'
                 bat 'echo JAVA_HOME=%JAVA_HOME%'
@@ -19,13 +29,13 @@ pipeline {
                 echo "Java is ready for build"
             }
         }
-    }
-    post {
-        success {
-            echo 'JDK setup and verification successful!'
-        }
-        failure {
-            echo 'JDK seetup ot verification failed'
+        stage("Use Jenkins Java Again") {
+            tools {
+                jsd 'JAVA-17'
+            }
+            steps {
+                bat 'java -version'
+            }
         }
     }
 }
