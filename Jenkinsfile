@@ -31,7 +31,7 @@ pipeline {
         }
         stage("Use Jenkins Java Again") {
             tools {
-                jsd 'JAVA-17'
+                jdk 'JAVA-17'
             }
             steps {
                 bat 'java -version'
