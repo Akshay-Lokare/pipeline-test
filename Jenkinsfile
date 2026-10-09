@@ -8,18 +8,13 @@ pipeline {
                 bat 'echo Build completed successfully!'
             }
         }
-    }
-
-    stages {
         stage('Test') {
             steps {
                 echo "Running tests..."
                 bat 'echo Tests passed!'
             }
         }
-    }
 
-    stages {
         stage('Deploy') {
             steps {
                 echo "Deploying the applications..."
@@ -27,7 +22,6 @@ pipeline {
             }
         }
     }
-
     post {
         success {
             echo 'Pipeline completed successfully!'
