@@ -2,17 +2,17 @@ pipeline {
     agent any
 
     parameters {
-        choices (
+        choice (
             name: "Environment",
             choices: [ 'DEV', 'TEST', 'PROD' ],
-            description: "Select deployment environment",
+            description: "Select deployment environment"
         )
     }
 
     stages {
         stage("Build") {
             steps {
-                bat 'echo Building app'
+                bat 'echo Building app' 
             }
         }
         stage("Test") {
