@@ -47,6 +47,8 @@ pipeline {
                 }
             }
             steps {
+                input message: "Approve deployment to PROD?",
+                ok: 'Approve'
                 bat 'echo Deploying to PROD'
             }
         }
