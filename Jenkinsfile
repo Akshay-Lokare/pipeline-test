@@ -14,6 +14,11 @@ pipeline {
             }
         }
         stage("Test") {
+            when {
+                expression {
+                    params.RunTests == true
+                }
+            }
             steps {
                 bat 'echo Testing app'
             }
