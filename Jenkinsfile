@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage("Show Parameters") {
             steps {
-                echo `Select Environment: ${params.Environment}`
-                echo `Run Tests: ${params.RunTests}`
+                echo "Select Environment: ${params.Environment}"
+                echo "Run Tests: ${params.RunTests}"
             }
         }
         stage("Build") {
